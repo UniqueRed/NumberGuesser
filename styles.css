@@ -68,7 +68,7 @@ body {
   }
   
   .loading-modal {
-    width: 400px;
+    width: 40%;
     background-color: white;
     padding: 20px;
     border-radius: 5px;
