@@ -11,24 +11,44 @@ body {
   
   h1 {
     font-size: 2em;
-    margin-bottom: 20px;
   }
   
   .input-container {
     display: flex;
+    align-items: center;
+    justify-content: center;
     gap: 10px;
   }
   
-  #userNumber, #guessButton {
+  #userNumber {
     padding: 10px 20px;
-    border: 1px solid #ccc;
+    border: 2px solid #ccc;
     border-radius: 5px;
+    outline: none;
+    transition: 250ms;
+  }
+
+  #userNumber:hover {
+    border-color: #acacac;
+  }
+
+  #userNumber:focus {
+    border-color: #767676;
   }
   
   #guessButton {
+    padding: 10px 20px;
+    border: 2px solid #1d86dd;
+    border-radius: 5px;
+    outline: none;
     cursor: pointer;
     background-color: #2196f3;
     color: white;
+    transition: 250ms;
+  }
+
+  #guessButton:hover {
+    filter: brightness(0.9);
   }
   
   #loading-container {
@@ -49,12 +69,13 @@ body {
     padding: 20px;
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    margin-bottom: 10px;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
   }
   
   .loading-modal h3 {
     font-size: 16px;
-    margin-bottom: 5px;
   }
   
   .loading-bar {
@@ -63,6 +84,7 @@ body {
     background-color: #2196f3;
     animation: loading 3s linear;
     animation-fill-mode: forwards;
+    border-radius: 5px;
   }
   
   @keyframes loading {
