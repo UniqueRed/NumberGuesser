@@ -5,28 +5,46 @@ let loadingContainer = document.getElementById('loading-container');
 const wait = (n) => new Promise((resolve) => setTimeout(resolve, n));
 
 guessButton.addEventListener('click', async function() {
-  const userNumber = parseInt(userNumberInput.value);
+  const userInput = userNumberInput.value;
 
-  // Disable number input and guess button
+  if (!isValidInput(userInput)) {
+    alert("Invalid input! Please enter a pure integer (including negative values or decimals). Letters and 'e' are not allowed.");
+    return;
+  }
+
+  const userNumber = parseFloat(userInput);
+
   userNumberInput.disabled = true;
   guessButton.disabled = true;
   loadingContainer.style.display = 'flex';
 
-  const loadingModals = ["Initializing user data", "Gathering nodes", "Calculating socket runtime", 
-  "Generating binary hashmap", "Computing server side authorization","Installing dependencies", 
-  "Rebooting system operations"];
+  const loadingModals = [
+    "Validating input parameters",
+    "Initializing user data",
+    "Gathering nodes",
+    "Calculating socket runtime",
+    "Generating binary hashmap",
+    "Encrypting data",
+    "Computing server side authorization",
+    "Installing dependencies",
+    "Analyzing libraries",
+    "Rebooting system operations",
+    "Upgrading program files",
+    "Verifying network",
+    "Checking DNS permissions",
+    "Handling events",
+    "Finalizing output"
+  ];
 
   for (const modal of loadingModals) {
-    await showLoadingModal(modal); // Sequentially display each modal
+    await showLoadingModal(modal);
   }
 
-  loadingContainer.style.display = 'none'; // Hide loading container
+  loadingContainer.style.display = 'none';
 
-  // Optionally, display a message after all modals
   const guessText = document.getElementById("guessText");
-  guessText.innerHTML = "You Guessed: " + userNumberInput.value;
+  guessText.innerHTML = "You Guessed: " + userNumber;
 
-  // Re-enable user interaction
   userNumberInput.disabled = false;
   guessButton.disabled = false;
 });
@@ -45,18 +63,20 @@ async function showLoadingModal(modalText) {
 
   loadingContainer.appendChild(loadingModal);
 
-  // Generate random delay for this modal
-  const maxDelay = 5000;  // Maximum delay in milliseconds
-  const minDelay = 2000;  // Minimum delay in milliseconds
+  const maxDelay = 5000;
+  const minDelay = 2000;
   const delay = Math.floor(Math.random() * (maxDelay - minDelay + 1)) + minDelay;
 
-  // Set animation duration based on the random delay
   loadingBar.style.animationDuration = `${delay}ms`;
 
-  // Simulate loading with the random delay
   await new Promise(resolve => setTimeout(resolve, delay));
 
   await wait(1000 * Math.floor(Math.random() * (1 - 0.5 + 1)) + 0.5);
 
-  loadingModal.remove(); // Remove the modal after delay
+  loadingModal.remove();
+}
+
+function isValidInput(input) {
+  const regex = /^-?\d+(\.\d+)?$/;
+  return regex.test(input);
 }
