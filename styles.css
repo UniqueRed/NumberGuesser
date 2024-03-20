@@ -21,11 +21,14 @@ body {
   }
   
   #userNumber {
+    font-family: sans-serif;
     padding: 10px 20px;
     border: 2px solid #ccc;
     border-radius: 5px;
     outline: none;
-    transition: 250ms;
+    transition: 500ms;
+    -webkit-user-scalable: none;
+    touch-action: manipulation;
   }
 
   #userNumber:hover {
@@ -37,6 +40,7 @@ body {
   }
   
   #guessButton {
+    font-family: sans-serif;
     padding: 10px 20px;
     border: 2px solid #1d86dd;
     border-radius: 5px;
@@ -44,7 +48,7 @@ body {
     cursor: pointer;
     background-color: #2196f3;
     color: white;
-    transition: 250ms;
+    transition: 500ms;
   }
 
   #guessButton:hover {
