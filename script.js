@@ -2,6 +2,8 @@ let userNumberInput = document.getElementById('userNumber');
 let guessButton = document.getElementById('guessButton');
 let loadingContainer = document.getElementById('loading-container');
 
+const wait = (n) => new Promise((resolve) => setTimeout(resolve, n));
+
 guessButton.addEventListener('click', async function() {
   const userNumber = parseInt(userNumberInput.value);
 
@@ -53,6 +55,8 @@ async function showLoadingModal(modalText) {
 
   // Simulate loading with the random delay
   await new Promise(resolve => setTimeout(resolve, delay));
+
+  await wait(1000 * Math.floor(Math.random() * (1 - 0.5 + 1)) + 0.5);
 
   loadingModal.remove(); // Remove the modal after delay
 }
