@@ -8,7 +8,7 @@ guessButton.addEventListener('click', async function() {
   const userInput = userNumberInput.value;
 
   if (!isValidInput(userInput)) {
-    alert("Invalid input! Please enter a pure integer (including negative values or decimals). Letters and 'e' are not allowed.");
+    alert("Invalid input!");
     return;
   }
 
@@ -43,7 +43,7 @@ guessButton.addEventListener('click', async function() {
   loadingContainer.style.display = 'none';
 
   const guessText = document.getElementById("guessText");
-  guessText.innerHTML = "You Guessed: " + userNumber;
+  guessText.innerHTML = "You Picked: " + userNumber;
 
   userNumberInput.disabled = false;
   guessButton.disabled = false;
